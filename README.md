@@ -16,6 +16,8 @@ mandará um e-mail para você avisando que o script falhou.
 3. Dentro da aba `Settings`, seção `Secret and Variables` e item `Actions`, adicione duas secrets:
     - `Username`: Contendo sua matrícula da UFSM.
     - `Password`: Contendo sua senha da UFSM.
+    - `Discord_Token`: Token do seu bot do discord
+    - `Discord_Channel`: Canal que sera enviada a mensagem
     - As secrets são variáveis privadas que somente podem ser alteradas. Nem ninguém, nem mesmo você terá acesso ao seu valor, depois de adicionada.
     ![secrets-guide](https://github.com/jaimeadf/ruina/assets/40345645/5dbf88a6-238e-4bf2-a1d5-679ee9284dfe)
 4. Dentro da aba `Actions`, clique em ativar workflows.
