@@ -27,6 +27,17 @@ executá-la manualmente na aba `Actions`.
 
 > Por favor, sempre que não for almoçar, cancele o agendamento ou disponibilize a refeição.
 
+## Notificações no Discord (implementação do fork)
+
+Se você quiser que o script envie um lembrete no Discord de seu grupo ou turma aos domingos e quartas-feiras para agendar o RU, passe o token do seu bot e
+o ID do canal na execução do script:
+
+```bash
+python main.py -u <MATRICULA> -p <SENHA> -t <DISCORD_BOT_TOKEN> -c <CANAL_ID>
+```
+
+O script enviará a mensagem nesses dias e continuará funcionando normalmente para agendar o RU.
+
 ## Configuração
 A configuração é feita a partir da edição do arquivo [config.yaml](config.yaml) que contém as seguintes opções:
 

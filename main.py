@@ -96,6 +96,20 @@ def find_schedules(date):
 
     return list(filtered_schedules)
 
+
+def send_discord_reminder(token: str, channel_id: str, message: str) -> None:
+    """Envia uma mensagem simples para um canal do Discord usando um bot."""
+    url = f'https://discord.com/api/v10/channels/{channel_id}/messages'
+    headers = {
+        'Authorization': f'Bot {token}',
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.post(url, json={'content': message}, headers=headers)
+
+    if not response.ok:
+        print(f"Falha ao enviar lembrete para o Discord: {response.status_code} {response.text}")
+
 parser = ArgumentParser(
     prog='ruina',
     description='Agenda automaticamente as refeições do RU da UFSM.'
@@ -103,6 +117,8 @@ parser = ArgumentParser(
 
 parser.add_argument('-u --username', dest='username', help='Sua matrícula do aplicativo da UFSM.')
 parser.add_argument('-p --password', dest='password', help='Sua senha do aplicativo da UFSM.')
+parser.add_argument('-t --token', dest='token', help='Token de acesso ao discord para notificações (opcional).')
+parser.add_argument('-c --channel', dest='channel', help='ID do canal do discord para notificações (opcional).')
 
 args = parser.parse_args()
 
@@ -112,6 +128,12 @@ config = read_config()
 print('Procurando refeições para serem agendadas amanhã...')
 now = datetime.now(pytz.timezone('Brazil/East'))
 tomorrow = now + timedelta(1)
+
+
+if args.token and args.channel:
+    if now.strftime('%a') in ('Sun', 'Wed'):
+        reminder = "📣 Agende o RU !!!! @everyone"
+        send_discord_reminder(args.token, args.channel, reminder)
 
 tomorrow_schedules = find_schedules(tomorrow)
 
