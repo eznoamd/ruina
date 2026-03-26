@@ -15,4 +15,4 @@ jobs:
           python-version: '3.10'
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python main.py -u "${{ secrets.Username }}" -p "${{ secrets.Password }} -t ${{secrets.DISCORD_TOKEN}} -c ${{secrets.DISCORD_CHANNEL}}"
+      - run: python main.py -u "${{ secrets.Username }}" -p "${{ secrets.Password }}" -t "${{secrets.DISCORD_TOKEN}}" -c "${{secrets.DISCORD_CHANNEL}}"
