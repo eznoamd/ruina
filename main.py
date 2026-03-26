@@ -131,7 +131,7 @@ tomorrow = now + timedelta(1)
 
 
 if args.token and args.channel:
-    if now.strftime('%a') in ('Sun', 'Wed'):
+    if now.strftime('%a') in ('Sun', 'Wed', 'Fri'):
         reminder = "📣 Agende o RU !!!! @everyone"
         send_discord_reminder(args.token, args.channel, reminder)
 
